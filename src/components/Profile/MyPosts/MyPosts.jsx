@@ -18,7 +18,7 @@ function MyPosts(props) {
 
   return (
     <div className={s.postsBlock}>
-      <h3>My posts</h3>
+      <h3>My all posts</h3>
       <div className={s.item}>new post</div>
       <div>
         <div>

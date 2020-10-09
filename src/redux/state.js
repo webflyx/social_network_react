@@ -1,5 +1,11 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+import sidebarReducer from "./sidebar-reducer";
+
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
+const ADD_MESSAGE = "ADD-MESSAGE";
+const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
 
 let store = {
   _state: {
@@ -27,6 +33,7 @@ let store = {
         { id: 3, message: "Yo" },
         { id: 4, message: "Yo2" },
       ],
+      newMessageText: "message-area",
     },
     sidebar: {
       friendsData: [
@@ -49,21 +56,11 @@ let store = {
   },
 
   dispatch(action) {
-    // {type: "ADD-POST"}
-    if (action.type === "ADD-POST") {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 0,
-      };
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagePage = dialogsReducer(this._state.messagePage, action);
+    this._state.sidebar = sidebarReducer(this._state.sidebar, action);
 
-      this._state.profilePage.postData.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._callSubscribe(this._state);
-    } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-      this._state.profilePage.newPostText = action.updNewText;
-      this._callSubscribe(this._state);
-    }
+    this._callSubscribe(this._state);
   },
 };
 
@@ -77,6 +74,19 @@ export const updateNewPostTextActionCreater = (text) => {
   return {
     type: UPDATE_NEW_POST_TEXT,
     updNewText: text,
+  };
+};
+
+export const addMessageActionCreater = () => {
+  return {
+    type: ADD_MESSAGE,
+  };
+};
+
+export const updateNewMessageTextActionCreater = (text) => {
+  return {
+    type: UPDATE_NEW_MESSAGE_TEXT,
+    updNewMessage: text,
   };
 };
 

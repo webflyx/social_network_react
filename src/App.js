@@ -17,8 +17,8 @@ function App(props) {
         <Header />
         <Nav friendDatabase={props.appState.sidebar.friendsData} />
         <div className="app-wrapper-content">
-          <Route path="/dialogs" render={() => <Dialogs dialogsData={props.appState.messagePage.dialogsData} messageData={props.appState.messagePage.messageData} />} />
-          <Route path="/profile" render={() => <Profile postData={props.appState.profilePage.postData} dispatch={props.dispatch} newPostText={props.appState.profilePage.newPostText} />} />
+          <Route path="/dialogs" render={() => <Dialogs dialogsData={props.appState.messagePage.dialogsData} dispatch={props.dispatch} messageData={props.appState.messagePage.messageData} newMessageText={props.appState.messagePage.newMessageText} />} />
+          <Route path="/profile" render={() => <Profile postData={props.appState.profilePage.postData} dispatch={props.dispatch} newPostText={props.appState.profilePage.newPostText} newMessageText={props.newMessageText} />} />
           <Route path="/news" render={() => <News />} />
           <Route path="/music" render={() => <Music />} />
           <Route path="/settings" render={() => <Settings />} />

@@ -11,7 +11,7 @@ function FriendSidebar(props) {
 }
 
 function Nav(props) {
-  let friendEL = props.friendDatabase.map((fr) => <FriendSidebar realName={fr.name} idFr={fr.id} />);
+  //  let friendEL = props.friendDatabase.map((fr) => <FriendSidebar realName={fr.name} idFr={fr.id} />);
 
   return (
     <nav className={s.nav}>
@@ -41,7 +41,7 @@ function Nav(props) {
         </NavLink>
       </div>
 
-      {friendEL}
+      {/* {friendEL} */}
     </nav>
   );
 }

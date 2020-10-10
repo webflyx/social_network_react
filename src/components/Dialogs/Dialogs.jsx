@@ -10,7 +10,6 @@ function Dialogs(props) {
 
   let messageElement = props.messageData.map((message) => <Message message={message.message} />);
 
-  let newMessageEl = React.createRef();
  
 
   let addMessageFn = () => {

@@ -1,7 +1,17 @@
 const ADD_POST = "ADD-POST";
 const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
 
-const profileReducer = (state, action) => {
+let initialState = {
+  postData: [
+    { id: 1, message: "i'm okey", likeCount: 12 },
+    { id: 2, message: "Hi! How are you?", likeCount: 15 },
+    { id: 3, message: "This my first post?", likeCount: 10 },
+    { id: 4, message: "This my first post? 1111111", likeCount: 10 },
+  ],
+  newPostText: "webFlyX",
+};
+
+const profileReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_POST:
       let newPost = {

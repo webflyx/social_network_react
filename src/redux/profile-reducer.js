@@ -20,18 +20,28 @@ const profileReducer = (state = initialState, action) => {
         likeCount: 0,
       };
 
-      let stateCopy = { ...state };
-      stateCopy.postData = [...state.postData];
-      stateCopy.postData.push(newPost);
-      stateCopy.newPostText = "";
+      return {
+        ...state,
+        postData: [...state.postData, newPost], //после запятой, вставляем то, что пушим
+        newPostText: "",
+      };
 
-      return stateCopy;
+      // let stateCopy = { ...state };
+      // stateCopy.postData = [...state.postData];
+      // stateCopy.postData.push(newPost);
+      // stateCopy.newPostText = "";
+
+      // return stateCopy;
     }
-    case UPDATE_NEW_POST_TEXT: {
-      let stateCopy = { ...state };
-      stateCopy.newPostText = action.updNewText;
-      return stateCopy;
-    }
+    case UPDATE_NEW_POST_TEXT:
+      return {
+        ...state,
+        newPostText: action.updNewText,
+      };
+    // let stateCopy = { ...state };
+    // stateCopy.newPostText = action.updNewText;
+    // return stateCopy;
+
     default:
       return state;
   }

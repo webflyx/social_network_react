@@ -6,16 +6,19 @@ import userPhoto from "../../../src/assets/images/user.png"
 
 class UsersC extends React.Component {
     
-    constructor(props) {
-        super(props);
-       
+    // constructor(props) {
+    //     super(props);
+    //     }
+    
+        componentDidMount(){
+
             axios
             .get("https://social-network.samuraijs.com/api/1.0/users")
             .then(response => { 
                 this.props.setUsers(response.data.items)
             })
+
         }
-    
 
     // getUsers = () => 
     //     {
